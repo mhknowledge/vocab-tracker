@@ -29,8 +29,8 @@
     <title>Vocab Tracker</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <!-- <noscript>You need to enable JavaScript to run this app.</noscript> -->
+    <!-- <div id="root"></div> -->
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -41,5 +41,38 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <nav>
+      <a href="/">Vocab Tracker</a>
+      <a href="/stats">Dashboard</a>
+    </nav>
+    <div class="wrapper activity">
+      <header>
+        <h1>Vocab Tracker</h1>
+      </header>
+      <div class="ui container activity">
+        <div class="ui raised card m-auto">
+          <div class="prev-activity">
+            <h3>Last Activity</h3>
+            <div>
+              <div class="language-stats"></div>
+              <div class="buttons">
+                <a id="continue-btn" href="/activity?" class="huge ui blue button">Continue Activity</a>
+                <a href="/activity" class="huge positive ui button">New Activity</a>
+              </div>
+            </div>
+          </div>
+          <div class="new-activity">
+            <h3>Start Your First Activity</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="toast">
+    You Have Successfully Added Your Activity!
+  </div>
+  <script src="/js/api.js"></script>
+  <script src="/js/activity.js"></script>
+  <script src="/js/index.js"></script>
   </body>
 </html>
