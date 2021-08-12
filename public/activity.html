@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>Vocab Tracker</title>
+    </head>
+
+    <body>
+        <nav>
+            <a href="/">Vocab Tracker</a>
+            <a href="/stats">Dashboard</a>
+        </nav>
+        <div class="wrapper">
+            <header>
+                <h1>Vocab Tracker</h1>
+            </header>
+            <div class="ui container activity">
+                <div class="ui raised card m-auto">
+                    <h2>Add Your Activity</h2>
+                    <form action="POST">
+                    <div class="activity-type">
+                        <label for="type">Activity Type:</label>
+                        <select name="type" id="type">
+                            <option disabled selected>Select Activity Type</option>
+                            <option value="vocabulary">Vocabulary</option>
+                            <option value="reading">Reading</option>
+                            <option value="writing">Writing</option>
+                            <option value="conversation">Conversation</option>
+                        </select>
+                    </div>
+                    <div class="vocabulary-form d-none">
+                        <div class="language-name">
+                            <label for="language-name">Language:</label>
+                            <input type="text" name="language-name" id="language-name" placeholder="Language"/>
+                        </div>
+                        <div class="amount">
+                            <label for="amount"># of Words:</label>
+                            <input type="number" name="amount" id="amount" placeholder="5" />
+                        </div>
+                        <div class="duration">
+                            <label for="duration">Duration (minutes):</label>
+                            <input type="number" name="duration" id="duration" placeholder="15" />
+                        </div>
+                    </div>
+                    <div class="reading-form d-none">
+                        <div class="language-name">
+                            <label for="language-name">Language:</label>
+                            <input type="text" name="language-name" id="language-name" placeholder="Language"/>
+                        </div>
+                        <div class="pages">
+                            <label for="pages"># of Pages:</label>
+                            <input type="number" name="pages" id="pages" placeholder="5-10"/>
+                        </div>
+                        <div class="duration">
+                            <label for="duration">Duration (minutes):</label>
+                            <input type="number" name="duration" id="duration" placeholder="15" />
+                        </div>
+                    </div>
+                    <div class="writing-form d-none">
+                        <div class="language-name">
+                            <label for="language-name">Language:</label>
+                            <input type="text" name="language-name" id="language-name" placeholder="Language"/>
+                        </div>
+                        <div class="sentences">
+                            <label for="sentences"># of Sentences:</label>
+                            <input type="number" name="sentences" id="sentences" placeholder="5" />
+                        </div>
+                        <div class="duration">
+                            <label for="duration">Duration (minutes):</label>
+                            <input type="number" name="duration" id="duration" placeholder="15" />
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+        <div id="toast">
+            Activity Successfully Added!
+        </div>
+        <script src="/js/api.js"></script>
+        <script src="/js/activity.js"></script>
+    </body>
+</html>
