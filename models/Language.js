@@ -22,7 +22,7 @@ const LanguageSchema = new Schema({
                 type: Number,
                 default: 0
             },
-            reps: {
+            amount: {
                 type: Number,
                 default: 0
             },
