@@ -2,7 +2,7 @@ const db = require("../models");
 const router = require("express").Router();
 
 //get activity
-router.get("/api/activities", (req, res) => {
+router.get("/api/activity", (req, res) => {
 
     db.Language.find({}).then(dbLanguage => {
         dbLanguage.forEach(activity => {
@@ -19,9 +19,9 @@ router.get("/api/activities", (req, res) => {
 });
 
 //add exercise
-router.put("/api/activities/:id", (req, res) => {
+router.put("/api/activity/:id", (req, res) => {
 
-    db.activity.findOneAndUpdate(
+    db.Language.findOneAndUpdate(
         {_id: req.params.id},
         {
             $inc: {totalDuration: req.body.duration},
@@ -35,9 +35,9 @@ router.put("/api/activities/:id", (req, res) => {
     });
 
     //get activities in range
-    router.get("/api/activities/range", (req, res) => {
+    router.get("/api/activity/range", (req, res) => {
 
-        db.activity.find({}).then(dbLanguage => {
+        db.Language.find({}).then(dbLanguage => {
             console.log("ALL ACTIVITIES");
             console.log(dbLanguage);
 
