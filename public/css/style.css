@@ -20,7 +20,7 @@ nav {
     background-color: #5793fd;
     color: #ffffff;
     height: 80px;
-    padding: 10px;
+    padding: 24px;
     line-height: 3;
     font-size: 1.2rem;
 }
@@ -32,6 +32,18 @@ a:visited {
     text-decoration: none;
     color: inherit;
 }
+
+nav a {
+    padding: 18px;
+    transition-property: color, background;
+    transition-duration: 0.5s;
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+nav a:hover {
+    background-color: #ffffff;
+    color: #5793fd;
+  }
 
 header {
    height: 150px;
