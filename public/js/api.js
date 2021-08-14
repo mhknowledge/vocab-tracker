@@ -2,7 +2,7 @@ const API = {
     async getLastActivity() {
         let res;
         try {
-            res =await fetch("/api/activities");
+            res = await fetch("/api/activities");
         } catch (err) {
             console.log(err)
         }

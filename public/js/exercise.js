@@ -5,7 +5,7 @@ const vocabForm = document.querySelector(".vocabulary-form");
 const readingForm = document.querySelector(".reading-form");
 const writingForm = document.querySelector(".writing-form");
 const convoForm = document.querySelector(".conversation-form");
-const langNameInput = document.querySelector("language-name");
+const langNameInput = document.querySelector("#language-name");
 // const nameInput = document.querySelector("#name");
 const amountInput = document.querySelector("#amount");
 const durationInput = document.querySelector("#duration");
@@ -13,15 +13,16 @@ const pagesInput = document.querySelector("#pages");
 const sentencesInput = document.querySelector("#sentences");
 const completeButton = document.querySelector("button.complete");
 const addButton = document.querySelector("button.add-another");
+const toast = document.querySelector("#toast");
 const newActivity = document.querySelector(".new-activity");
 
 let activityType = null;
 let shouldNavigateAway = false;
 
 async function initExercise () {
-    let activities;
+    let activity;
     
-    if (location.search.split("=")[1] ===undefined) {
+    if (location.search.split("=")[1] === undefined) {
         acitivy = await API.createActivity()
         console.log(activity)
     }
