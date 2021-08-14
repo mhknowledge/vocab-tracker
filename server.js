@@ -12,7 +12,7 @@ app.use(express.static("public"));
 app.use(logger("dev"));
 
 mongoose.connect(
-    process.env.MONGODB_URI ||'mongodb://localhost/'language',
+    process.env.MONGODB_URI || "mongodb://localhost/language", 
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
