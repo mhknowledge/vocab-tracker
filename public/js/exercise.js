@@ -66,5 +66,79 @@ function handleActivityTypeChange(event) {
 }
 
 function validateInputs() {
-    
+    let isValid = true;
+
+    if (activityType === "vocabulary") {
+        if (langNameInput.value.trim() ==="") {
+            isValid = false;
+        }
+        if (amountInput.value.trim() ==="") {
+            isValid = false;
+        }
+        if (durationInput.value.trim() === "") {
+            isValid = false;
+        }
+    } else if (activityType === "reading") {
+        if (langNameInput.value.trim() ==="") {
+            isValid = false;
+        }
+        if (pagesInput.value.trim() === "") {
+            isValid = false;
+        }
+        if (durationInput.value.trim() === "") {
+            isValid = false;
+        }
+    } else if (activityType === "writing") {
+        if (langNameInput.value.trim() ==="") {
+            isValid = false;
+        }
+        if (sentencesInput.value.trim() === "") {
+            isValid = false;
+        }
+        if (durationInput.value.trim() === "") {
+            isValid = false;
+        }
+    } else if (activityType === "conversation") {
+        if (langNameInput.value.trim() ==="") {
+            isValid = false;
+        }
+        if (durationInput.value.trim() === "") {
+            isValid = false;
+        }
+    }
+
+    if (isValid) {
+        completeButton.removeAttribute("disabled");
+        addButton.removeAttribute("disabled");
+    } else {
+        completeButton.setAttribute("disabled", true);
+        addButton.setAttribute("disabled", true);
+    }
+}
+
+async function handleFormSubmit(event) {
+    event.preventDefault();
+
+    let activityData = {};
+
+    if (activityType === "vocabulary") {
+        activityData.type = "vocabulary";
+        activityData.name = langNameInput.value.trim();
+        activityData.amount = Number(amountInput.value.trim());
+        activityData.duration = Number(durationInput.value.trim());
+    } else if (activityType === "reading") {
+        activityData.type = "reading";
+        activityData.name = langNameInput.value.trim();
+        activityData.pages = Number(pagesInput.value.trim());
+        activityData.duration = Number(durationInput.value.trim());
+    } else if (activityType === "writing") {
+        activityData.type = "writing";
+        activityData.name = langNameInput.value.trim();
+        activityData.sentences = Number(sentencesInput.value.trim());
+        activityData.duration = Number(durationInput.value.trim());
+    } else if (activityType === "conversation") {
+        activityData.type = "conversation";
+        activityData.name = langNameInput.value.trim();
+        activityData.duration = Number(durationInput.value.trim());
+    }
 }
