@@ -4,21 +4,33 @@ const router = require("express").Router();
 //get activity
 router.get("/api/activity", (req, res) => {
 
-    db.Language.find({}).then(dbLanguage => {
-        dbLanguage.forEach(activity => {
-            var total = 0;
-            activity.exercises.forEach(e => {
-                total += e.duration;
-            });
-            activity.totalDuration = total;
-        });
-        res.json(dbLanguage);
-    }).catch(err => {
-        res.json(err);
+    // db.Language.find({}).then(dbLanguage => {
+    //     dbLanguage.forEach(activity => {
+    //         var total = 0;
+    //         activity.exercises.forEach(e => {
+    //             total += e.duration;
+    //         });
+    //         activity.totalDuration = total;
+    //     });
+    //     res.json(dbLanguage);
+    // }).catch(err => {
+    //     res.json(err);
+    // });
+    db.Language.aggregate([{
+        $addFields: {
+            totalDuration: {$sum: "$exercises.duration"}
+        }
+    }])
+    .sort({day: 1})
+    .then(dbActivity => {
+        res.json(dbActivity);
+    })
+    .catch(err => {
+        res.status(400).json(err);
     });
 });
 
-//add exercise
+//add & Update exercises
 router.put("/api/activity/:id", (req, res) => {
 
     db.Language.findOneAndUpdate(
@@ -31,6 +43,16 @@ router.put("/api/activity/:id", (req, res) => {
             res.json(dbLanguage);
         }).catch(err => {
             res.json(err);
+        });
+    });
+
+    router.post("/api/activity", ({body}, res) => {
+        db.Language.create(body)
+        .then(dbLanguage => {
+            res.json(dbLanguage);
+        })
+        .catch(err => {
+            res.status(400).json(err);
         });
     });
 
@@ -47,4 +69,14 @@ router.put("/api/activity/:id", (req, res) => {
         });
     });
 
+    router.delete('/api/activity', ({body}, res) => {
+        db.Language.findByIdAndDelete(body.id)
+        .then(() => {
+            res.json(true);
+        })
+        .catch((err) => {
+            res.json(err);
+        });
+    });
+    
     module.exports = router;
