@@ -4,7 +4,8 @@ let db = require("../models");
 
 mongoose.connect("mongodb://localhost/language", {
     useNewUrlParser: true,
-    useFindAndModify: false 
+    useFindAndModify: false,
+    useUnifiedTopology: true,
 });
 
 let languageSeed = [
