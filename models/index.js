@@ -1,3 +1,3 @@
 module.exports = {
-    Language: require('./language')
+    Language: require("./Language")
 };
