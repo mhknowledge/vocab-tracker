@@ -6,7 +6,7 @@ const readingForm = document.querySelector(".reading-form");
 const writingForm = document.querySelector(".writing-form");
 const convoForm = document.querySelector(".converstation-form");
 const langNameInput = document.querySelector("language-name");
-const nameInput = document.querySelector("#name");
+// const nameInput = document.querySelector("#name");
 const amountInput = document.querySelector("#amount");
 const durationInput = document.querySelector("#duration");
 const pagesInput = document.querySelector("#pages");
@@ -141,4 +141,42 @@ async function handleFormSubmit(event) {
         activityData.name = langNameInput.value.trim();
         activityData.duration = Number(durationInput.value.trim());
     }
+
+    await API.addExercise(workoutData);
+    clearInputs();
+    toast.classList.add("success");
 }
+
+function handleToastAnimationEnd() {
+    toast.removeAttribute("class");
+    if (shouldNavigateAway) {
+        location.href = "/";
+    }
+}
+
+function clearInputs() {
+    langNameInput.value = "";
+    amountInput.value = "";
+    durationInput.value = "";
+    pagesInput.value = "";
+    sentencesInput.value = "";
+}
+
+if (activityTypeSelect) {
+    activityTypeSelect.addEventListener("change", handleActivityTypeChange);
+}
+
+if (completeButton) {
+    completeButton.addEventListener("click", function (event) {
+        shouldNavigateAway = true;
+        handleFormSubmit(event);
+    });
+}
+if (addButton) {
+    addButton.addEventListener("click", handleFormSubmit);
+}
+toast.addEventListener("animationend", handleToastAnimationEnd);
+
+document
+.querySelectorAll("input")
+.forEach(element => element.addEventListener("input", validateInputs));
