@@ -46,11 +46,11 @@ const LanguageSchema = new Schema(
         toJSON: {virtuals: true},
     }
  );
- languageSchema.virtuals("totalDuration").get(function () {
-     return this.exercises.reduce((total, exercise) => {
-         return total + exercise.duration;
-     }, 0);
- });
+//  languageSchema.virtuals("totalDuration").get(function () {
+//      return this.exercises.reduce((total, exercise) => {
+//          return total + exercise.duration;
+//      }, 0);
+//  });
 
 const Language = mongoose.model("Language", languageSchema);
 
